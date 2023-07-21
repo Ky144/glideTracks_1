@@ -1,9 +1,17 @@
 /* style.css */
 body{
-    background-color:#dcf5f7;
+    background-color:#D1F5F9;
+}
+h1,h2{
+    font-family: monospace;
+    font-color: #657678;
+    text-align: center;
 }
 form {
-    max-width: 400px;
+    font-family: monospace;
+    background-color:#7BCED6;
+    font-color: #657678;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -18,6 +26,7 @@ label {
 
 input[type="text"] {
     width: 100%;
+    font-family: monospace;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -26,6 +35,7 @@ input[type="text"] {
 
 input[type="submit"] {
     background-color: #03e8fc;
+    font-family: monospace;
     color: white;
     padding: 10px 15px;
     border: none;

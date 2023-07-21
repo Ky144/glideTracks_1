@@ -4,6 +4,9 @@ import com.oracle.svm.core.annotate.Inject;
 import hs.os.skaterverwaltung.control.ISkaterManagement;
 import hs.os.skaterverwaltung.control.dto.SkaterDTO;
 import hs.os.skaterverwaltung.entity.Skater;
+import io.quarkus.qute.CheckedTemplate;
+import io.quarkus.qute.TemplateInstance;
+
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -19,16 +22,32 @@ public class SkaterResource {
     @Inject
     private ISkaterManagement management;
 
+    public SkaterResource(ISkaterManagement management) {
+        this.management = management;
+    }
+
+
+    @CheckedTemplate
+    static class Templates{
+        static native TemplateInstance skater(Collection<Skater> skater);
+        //static native TemplateInstance addSkater(Skater skater);
+        static native TemplateInstance notFound();
+
+    }
+
+
     @GET
     @Produces(MediaType.TEXT_HTML)
     @Transactional
-    public Response getAllSkater(){
+    public TemplateInstance getAllSkater(){
         Collection<Skater> skater= this.management.getAll();
+
         if(skater.isEmpty()){
-            return Response.noContent().build();
+            //return Response.noContent().build();
+            return Templates.notFound();
         }
         //return Response.ok(management.getAll()).build();
-         return Response.ok(skater).build();
+         return Templates.skater(skater);
     }
 
     @GET

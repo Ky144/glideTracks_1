@@ -15,6 +15,7 @@ public class GreetingResource {
     @CheckedTemplate
     public static class Templates{
         public static native TemplateInstance hello();
+
     }
 
     @GET
@@ -23,4 +24,12 @@ public class GreetingResource {
 
         return Templates.hello();
     }
+    /*
+    @GET
+    @Path("/hello/base")
+    @Produces(MediaType.TEXT_PLAIN)
+    public TemplateInstance base() {
+
+        return GreetingResource.Templates.base();
+    }*/
 }

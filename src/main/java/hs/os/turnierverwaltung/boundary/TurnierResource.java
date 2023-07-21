@@ -7,7 +7,6 @@ import hs.os.skaterverwaltung.entity.Skater;
 import hs.os.turnierverwaltung.control.ITurnierManagement;
 import hs.os.turnierverwaltung.control.dto.TurnierDTO;
 import hs.os.turnierverwaltung.entity.Turnier;
-import hs.os.skaterverwaltung.boundary.SkaterResource;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -24,6 +23,11 @@ public class TurnierResource {
 
     @Inject
     private ISkaterManagement skaterManagement;
+
+    public TurnierResource(ITurnierManagement management, ISkaterManagement skaterManagement) {
+        this.management = management;
+        this.skaterManagement = skaterManagement;
+    }
 
     @GET
     @Produces(MediaType.TEXT_HTML)
