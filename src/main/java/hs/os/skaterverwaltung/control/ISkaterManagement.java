@@ -7,10 +7,10 @@ import hs.os.skaterverwaltung.entity.Skater;
 import java.util.Collection;
 
 public interface ISkaterManagement {
-    public Skater get(int id);
+    public Skater get(long id);
     public Collection<Skater> getAll();
     public Skater add(SkaterDTO dto);
-    public Skater edit(int id, SkaterDTO dto);
-    public boolean delete(int id);
+    public Skater edit(long id, SkaterDTO dto);
+    public boolean delete(long id);
 
 }

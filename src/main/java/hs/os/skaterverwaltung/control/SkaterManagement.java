@@ -13,7 +13,7 @@ public class SkaterManagement implements ISkaterManagement{
     private ISkaterRepository repository;
 
     @Override
-    public Skater get(int id) {
+    public Skater get(long id) {
         return this.repository.get(id);
     }
 
@@ -28,12 +28,12 @@ public class SkaterManagement implements ISkaterManagement{
     }
 
     @Override
-    public Skater edit(int id, SkaterDTO dto) {
+    public Skater edit(long id, SkaterDTO dto) {
         return this.repository.edit(id, dto);
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(long id) {
         return this.repository.delete(id);
     }
 }
