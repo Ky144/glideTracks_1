@@ -2,34 +2,61 @@ package hs.os.turnierverwaltung.entity;
 
 import hs.os.skaterverwaltung.entity.Skater;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.json.bind.annotation.JsonbTransient;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-
+@Entity
+@Table(name = "turnier")
 public class Turnier {
     private String name;
     @Id
     @GeneratedValue
-    private int id;
-    private String date;
+    private long id;
+    private String datum;
     private String ort;
 
-    //@ManyToOne
-    //private Skater skater;
+    /**
+     * Gibt die Teilnehmer/angemeldeten Skater des Turniers an.
+     */
+    @JsonbTransient
     @ManyToMany
-    private List<Skater> skaters = new ArrayList<>();
-
-    public Turnier(String name){
+    @JoinTable(
+            name = "turnier_teilnehmer",
+            joinColumns = {@JoinColumn(name= "turnier_id")},
+            inverseJoinColumns = {@JoinColumn(name = "skater_id")}
+    )
+    private Collection<Skater>  teilnehmer;
+    public Turnier(String name, String datum, String ort){
         this.name=name;
+        this.datum=datum;
+        this.ort=ort;
+
     }
     public Turnier(){
 
     }
 
-    public String getName() {
+    public void addSkater(Skater skater) {
+
+        teilnehmer.add(skater);
+    }
+
+    public void removeSkater(Skater skater) {
+        if (teilnehmer != null) {
+            teilnehmer.remove(skater);
+        }
+    }
+
+    public Collection<Skater> getSkaters() {
+        return teilnehmer;
+    }
+
+
+
+
+        public String getName() {
         return name;
     }
 
@@ -37,7 +64,7 @@ public class Turnier {
         this.name = name;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -46,11 +73,11 @@ public class Turnier {
     }
 
     public String getDate() {
-        return date;
+        return datum;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.datum = date;
     }
 
     public String getOrt() {
@@ -59,29 +86,5 @@ public class Turnier {
 
     public void setOrt(String ort) {
         this.ort = ort;
-    }
-
-    /*public Skater getSkater() {
-        return skater;
-    }
-
-    public void setSkater(Skater skater) {
-        this.skater = skater;
-    }*/
-    public void addSkater(Skater skater) {
-        if (skaters == null) {
-            skaters = new ArrayList<>();
-        }
-        skaters.add(skater);
-    }
-
-    public void removeSkater(Skater skater) {
-        if (skaters != null) {
-            skaters.remove(skater);
-        }
-    }
-
-    public List<Skater> getSkaters() {
-        return skaters;
     }
 }

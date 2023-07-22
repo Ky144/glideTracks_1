@@ -1,27 +1,35 @@
 package hs.os.skaterverwaltung.entity;
 
+import hs.os.security.UserLogin;
+import io.quarkus.elytron.security.common.BcryptUtil;
+
 import javax.enterprise.inject.Vetoed;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@Vetoed
-public class Skater {
-    @Id
-    @GeneratedValue
-    private int id;
+public class Skater extends UserLogin {
+
     private String vorname;
     private String nachname;
     private String disziplin;
-    private int alter;
+    private long alter;
 
-    public Skater(int id, String vorname, String nachname, String disziplin, int alter){
-        this.id=id;
+    public Skater(String vorname, String nachname, String disziplin, long alter){
         this.vorname=vorname;
         this.nachname=nachname;
         this.disziplin=disziplin;
         this. alter=alter;
+    }
+    public Skater(String vorname, String nachname){
+        this.vorname=vorname;
+        this.nachname=nachname;
+        this.vorname = vorname + "-" + nachname;
+        // Passwort besteht aus dem ersten Zeichen des Vor- und Nachnamens
+        // Bsp.: Katharina Schmidt = KS
+        // Dies ist nur temporär
+        this.passwort = BcryptUtil.bcryptHash(vorname.substring(0, 1) + nachname.substring(0, 1));
     }
 
     public Skater(){
@@ -29,20 +37,11 @@ public class Skater {
     }
 
 
-
-    public Skater(String vorname, String nachname, String disziplin, int alter) {
-        this.vorname=vorname;
-        this.nachname=nachname;
-        this.disziplin=disziplin;
-        this. alter=alter;
-
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -70,7 +69,7 @@ public class Skater {
         this.disziplin = disziplin;
     }
 
-    public int getAlter() {
+    public long getAlter() {
         return alter;
     }
 

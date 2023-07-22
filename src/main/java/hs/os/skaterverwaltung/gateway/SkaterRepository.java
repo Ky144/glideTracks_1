@@ -8,13 +8,16 @@ import javax.enterprise.context.ApplicationScoped;
 import java.util.Collection;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
+/**
+ * Datenbankanbindung für Skater Objekte
+ */
 @ApplicationScoped
 public class SkaterRepository implements ISkaterRepository,PanacheRepository<Skater> {
 
 
     @Override
-    public Skater get(int id) {
-        return find("id", id).firstResult();
+    public Skater get(long id) {
+        return findById(id);
     }
 
     @Override
@@ -30,9 +33,9 @@ public class SkaterRepository implements ISkaterRepository,PanacheRepository<Ska
     }
 
     @Override
-    public Skater edit(int id, SkaterDTO dto) {
+    public Skater edit(long id, SkaterDTO dto) {
 
-        Skater skater =find("id",id).firstResult();
+        Skater skater = findById(id);
         if(skater !=null){
             skater.setVorname(dto.vorname);
             skater.setNachname(dto.nachname);
@@ -43,11 +46,7 @@ public class SkaterRepository implements ISkaterRepository,PanacheRepository<Ska
     }
 
     @Override
-    public boolean delete(int id) {
-        long deletedRowsCount = delete("id",id);
-        if(deletedRowsCount ==1 ){
-            return true;
-        }
-        return false;
+    public boolean delete(long id) {
+       return deleteById(id);
     }
 }

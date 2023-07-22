@@ -5,6 +5,9 @@ import javax.inject.Singleton;
 import javax.transaction.Transactional;
 import io.quarkus.runtime.StartupEvent;
 
+/**
+ * Dient der Erzeugung von Default-Anmeldeinformationen beim Start der API.
+ */
 @Singleton
 public class CreateInitialSecEntities
 {
@@ -12,6 +15,10 @@ public class CreateInitialSecEntities
     public void loadUsers(@Observes StartupEvent event)
     {
         UserLogin.deleteAll();
-        UserLogin.addAdmin("admin", "123", "admin");
+        //Admin einfügen
+        UserLogin.addAdmin("admin", "123");
+        //Skater einfügen
+        UserLogin.addSkater("Katharina", "Schmidt", "Einzel", 20);
+        UserLogin.addSkater("Max", "Müller", "Doppel", 16);
     }
 }

@@ -1,11 +1,36 @@
 package hs.os.skaterverwaltung.control.dto;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import javax.validation.constraints.NotBlank;
+
+@Schema(name="SkaterDTO", description="Skater-Repräsentation zur Editierung/Hinzufügen eines Skaters")
 public class SkaterDTO {
+    @Schema(title = "Vorname", required = true)
+    @NotBlank
     public String vorname;
+
+    @Schema(title = "Nachname", required = true)
+    @NotBlank
+    public String nachname;
+
+    @Schema(title = "Disziplin", required = true)
+    @NotBlank
+    public String disziplin;
+
+    @Schema(title = "Alter", required = true)
+    @NotBlank
+    public int alter;
+
+}
+
+
+    /*public String vorname;
     public String nachname;
 
     public  String disziplin;
     public int alter;
+
 
     public SkaterDTO(String vorname, String nachname, String disziplin, int alter){
         this.vorname=vorname;
@@ -44,5 +69,5 @@ public class SkaterDTO {
 
     public void setNachname(String nachname) {
         this.nachname = nachname;
-    }
-}
+    }*/
+

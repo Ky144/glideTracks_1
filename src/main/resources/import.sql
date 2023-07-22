@@ -8,4 +8,4 @@
 --insert into Pizza(id, name, beschreibung, preis) values(23, 'Margaritha', 'Efg', 4.89);
 insert into Skater(id,vorname,nachname,disziplin,alter) values(1,'Max','Meier','Einzel',19);
 insert into Skater(id,vorname,nachname,disziplin,alter) values(3,'Hanna','Mueller','Doppel',20);
-insert into Turnier(id,date,ort,skater) values(3,'25.3.2024','Hannover','''Hanna'',''Mueller'',''Doppel'',20');
+insert into Turnier(name,date,ort,skater) values(3,'25.3.2024','Hannover','''Hanna'',''Mueller'',''Doppel'',20');

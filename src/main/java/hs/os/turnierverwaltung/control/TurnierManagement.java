@@ -17,7 +17,7 @@ public class TurnierManagement implements ITurnierManagement{
     private ITurnierRepository repository;
 
     @Override
-    public Turnier get(int id) {
+    public Turnier get(long id) {
         return this.repository.get(id);
     }
 
@@ -32,27 +32,24 @@ public class TurnierManagement implements ITurnierManagement{
     }
 
     @Override
-    public Turnier edit(int id, TurnierDTO dto) {
+    public Turnier edit(long id, TurnierDTO dto) {
         return this.repository.edit(id,dto);
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(long id) {
         return this.repository.delete(id);
     }
 
     @Override
-    public boolean deleteSkater(int id, Skater skater) {
-        return this.repository.deleteSkater(id,skater);
+    public Collection<Turnier> searchByTurnierName(String search) {
+        return this.repository.searchByTurnierName(search);
     }
 
     @Override
-    public List<Skater> getAllSkaters(int id) {
-        return this.repository.getAllSkaters(id);
+    public Collection<Turnier> getTurnierOfSkater(long skaterId) {
+        return this.repository.getTurnierOfSkater(skaterId);
     }
 
-    @Override //id=turnierId
-    public Turnier addSkater(int id, Skater skater) {
-        return this.repository.addSkater(id,skater);
-    }
+
 }

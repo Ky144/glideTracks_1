@@ -9,13 +9,12 @@ import java.util.List;
 
 public interface ITurnierRepository {
 
-    public Turnier get(int id);
+    public Turnier get(long id);
     public Collection<Turnier> getAll();
     public Turnier add (TurnierDTO dto);
-    public Turnier edit (int id, TurnierDTO dto);
-    public boolean delete (int id);
-    public boolean deleteSkater (int id, Skater skater);
+    public Turnier edit (long id, TurnierDTO dto);
+    public boolean delete (long id);
 
-    public List<Skater> getAllSkaters(int id); //id=turnierId
-    public Turnier addSkater(int id, Skater skater);
+    public Collection<Turnier> searchByTurnierName(String search);
+    public Collection<Turnier> getTurnierOfSkater(long skaterId);
 }
