@@ -3,77 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>GlideTracks</title>
-    <style>
-        /* style.css */
-        body{
-            background-color:#D1F5F9;
-        }
-        h1{
-            font-family: monospace;
-            font-color: #657678;
-            text-align: center;
-        }
-        form {
-            font-family: monospace;
-            background-color:#7BCED6;
-            font-color: #657678;
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            font-size: 15px;
-        }
+    {#include skaterForm.html}
+    {/include}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            font-family: monospace;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 15px;
-        }
-
-        input[type="submit"] {
-            background-color: #03e8fc;
-            font-family: monospace;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #86eef7;
-        }
-
-    </style>
 </head>
 <body>
 
+    {#include skaterForm.html}
 
-<form method="POST">
-    <h1 style="color: #657678">Eiskunstläufer anlegen: </h1>
-    <label for="username" style="color: #394445">Vorname:</label>
-    <input type="text" style="color: #9FAEAE"value="Vornamename">
-    <label for="nachname" style="color: #394445">Nachname:</label>
-    <input type="text" style="color: #9FAEAE "value="Nachname">
-    <label for="disziplin" style="color: #394445">Disziplin:</label>
-    <input type="text" style="color: #9FAEAE"value="Disziplin">
-    <label for="alter" style="color: #394445">Alter:</label>
-    <input type="number" style="color: #9FAEAE "value="Alter"><br><br>
-    <a href=""><button type="submit"style="color: #657678">Hinzufügen</button></a>
-
-</form>
-
+    {/include}
 
 </body>
 </html>

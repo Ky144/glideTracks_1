@@ -51,5 +51,15 @@ public class TurnierManagement implements ITurnierManagement{
         return this.repository.getTurnierOfSkater(skaterId);
     }
 
+    @Override
+    public boolean signSkaterIn(long turnierId, long skaterId) {
+        return this.repository.signSkaterIn(turnierId, skaterId);
+    }
+
+    @Override
+    public boolean signSkaterOut(long turnierId, long skaterId) {
+        return this.repository.signSkaterOut(turnierId, skaterId);
+    }
+
 
 }

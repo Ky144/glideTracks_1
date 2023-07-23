@@ -10,10 +10,11 @@ import java.util.List;
 @Entity
 @Table(name = "turnier")
 public class Turnier {
-    private String name;
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    private String name;
+
     private String datum;
     private String ort;
 
@@ -27,26 +28,45 @@ public class Turnier {
             joinColumns = {@JoinColumn(name= "turnier_id")},
             inverseJoinColumns = {@JoinColumn(name = "skater_id")}
     )
-    private Collection<Skater>  teilnehmer;
+    private Collection<Skater> teilnehmer;
+
     public Turnier(String name, String datum, String ort){
+        this();
         this.name=name;
         this.datum=datum;
         this.ort=ort;
 
     }
     public Turnier(){
+        this.teilnehmer= new ArrayList<Skater>();
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getDatum() {
+        return datum;
+    }
+
+    public void setDatum(String datum) {
+        this.datum = datum;
+    }
+
+    public Collection<Skater> getTeilnehmer() {
+        return teilnehmer;
+    }
+
+    public void setTeilnehmer(Collection<Skater> teilnehmer) {
+        this.teilnehmer = teilnehmer;
     }
 
     public void addSkater(Skater skater) {
-
         teilnehmer.add(skater);
     }
 
     public void removeSkater(Skater skater) {
-        if (teilnehmer != null) {
             teilnehmer.remove(skater);
-        }
     }
 
     public Collection<Skater> getSkaters() {
@@ -54,9 +74,7 @@ public class Turnier {
     }
 
 
-
-
-        public String getName() {
+    public String getName() {
         return name;
     }
 

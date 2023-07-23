@@ -19,7 +19,8 @@ public interface ITurnierManagement {
     public Collection<Turnier> searchByTurnierName(String search);
     public Collection<Turnier> getTurnierOfSkater(long skaterId);
 
-
+    public boolean signSkaterIn(long turnierId, long skaterId);
+    public boolean signSkaterOut(long turnierId, long skaterId);
 
 
 }

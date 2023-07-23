@@ -8,9 +8,9 @@
         body{
             background-color:#D1F5F9;
         }
-        h1{
-            font-family: monospace;
-            font-color: #657678;
+        h1 {
+            font-family: "Arial", sans-serif;
+            color: #657678;
             text-align: center;
         }
         form {
@@ -58,22 +58,25 @@
     </style>
 </head>
 <body>
+<h1>Add New Skater</h1>
+<form action="/web/v1/skater/add" method="post">
+    <label for="Vorname">Vorname:</label>
+    <input type="text" id="firstName" name="firstName" required><br>
+
+    <label for="Nachname">Nachname:</label>
+    <input type="text" id="lastName" name="lastName" required><br>
+
+    <label for="lDisziplin">Disziplin:</label>
+    <input type="text" id="lastName" name="disziplin" required><br>
 
 
-<form>
-    <h1 style="color: #657678">Eiskunstläufer anlegen: </h1>
-    <label for="username" style="color: #394445">Vorname:</label>
-    <input type="text" style="color: #9FAEAE"value="Vornamename">
-    <label for="nachname" style="color: #394445">Nachname:</label>
-    <input type="text" style="color: #9FAEAE "value="Nachname">
-    <label for="disziplin" style="color: #394445">Disziplin:</label>
-    <input type="text" style="color: #9FAEAE"value="Disziplin">
-    <label for="alter" style="color: #394445">Alter:</label>
-    <input type="number" style="color: #9FAEAE "value="Alter"><br><br>
-    <a href=""><button type="submit"style="color: #657678">Hinzufügen</button></a>
+    <label for="Alter">Alter:</label>
+    <input type="number" id="alter" name="alter" required><br>
 
+
+    <!-- Link to skaters.html -->
+    <button type="submit" href="/web/v1/skater" class="btn-add" title="Add Skater">Add Skater </button>
+    </div>
 </form>
-
-
 </body>
 </html>

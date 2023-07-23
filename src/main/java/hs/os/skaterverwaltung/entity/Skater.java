@@ -1,12 +1,14 @@
 package hs.os.skaterverwaltung.entity;
 
 import hs.os.security.UserLogin;
+import hs.os.turnierverwaltung.entity.Turnier;
 import io.quarkus.elytron.security.common.BcryptUtil;
 
 import javax.enterprise.inject.Vetoed;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Skater extends UserLogin {
@@ -15,6 +17,9 @@ public class Skater extends UserLogin {
     private String nachname;
     private String disziplin;
     private long alter;
+
+    @ManyToOne
+    Turnier turnier;
 
     public Skater(String vorname, String nachname, String disziplin, long alter){
         this.vorname=vorname;

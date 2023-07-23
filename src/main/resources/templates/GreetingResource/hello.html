@@ -13,6 +13,15 @@
             font-color: #657678;
             text-align: center;
         }
+        p{
+            font-family: monospace;
+            font-color: #657678;
+            text-align: center;
+            font-size: 16px;
+        }
+        div{
+            text-align: center;
+        }
         form {
             font-family: monospace;
             background-color:#7BCED6;
@@ -58,20 +67,15 @@
     </style>
 </head>
 <body>
-<h1 style="color: #657678">Herzlich Willkommen bei GlideTracks!</h1>
 
-<form>
-    <h1 style="color: #657678">Anmelden: </h1>
-    <label for="username" style="color: #394445">Nutzername:</label>
-    <input type="text" style="color: #9FAEAE"value="Nutzername">
-    <label for="password" style="color: #394445">Passwort:</label>
-    <input type="text" style="color: #9FAEAE "value="Passwort">
-    <label for="rolle" style="color: #394445">Rolle:</label>
-    <input type="text" style="color: #9FAEAE"value="Rolle"><br><br>
-    <a href="http://localhost:8080/hello/base/base.html"><button type="submit"style="color: #657678">Anmelden</button></a>
 
-</form>
-
+<div class="center">
+    <h1 style="color: #657678">Herzlich Willkommen bei GlideTracks!</h1>
+    <p>Dieses Programm dient zur Turnierverwaltung von Eiskunstläufern </p>
+    <!-- Link to skaters.html -->
+    <!--<button type="submit" href="/web/v1/skater" class="btn-add" title="Add Skater">Add Skater </button>-->
+    <a href="http://localhost:8080/web/v1/turnier"><button>Anmelden</button></a>
+</div>
 
 </body>
 </html>

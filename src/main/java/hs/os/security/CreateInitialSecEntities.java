@@ -20,5 +20,7 @@ public class CreateInitialSecEntities
         //Skater einfügen
         UserLogin.addSkater("Katharina", "Schmidt", "Einzel", 20);
         UserLogin.addSkater("Max", "Müller", "Doppel", 16);
+        UserLogin.addSkater("Andreas", "wiegand", "Doppel", 17);
     }
+
 }

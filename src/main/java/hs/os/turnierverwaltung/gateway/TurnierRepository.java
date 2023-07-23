@@ -14,6 +14,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
+/*
+Implementierungsklasse für das ITurnierRepository-Interface, das die Datenbankoperationen für die Turnier-Entität bereitstellt.
+ */
 @ApplicationScoped
 public class TurnierRepository implements ITurnierRepository, PanacheRepository<Turnier> {
     @Inject
@@ -76,6 +79,52 @@ public class TurnierRepository implements ITurnierRepository, PanacheRepository<
 
         return turniereOfStudent;
     }
+
+    @Override
+    public boolean signSkaterIn(long turnierId, long skaterId) {
+        Turnier turnier = findById(turnierId);
+        Skater skater = em.find(Skater.class, skaterId);
+
+        if (turnier == null || skater == null) {
+            // Wenn das Turnier oder der Skater nicht gefunden wurde,
+            return false;
+        }
+
+        // Überprüfen, ob der Skater bereits angemeldet ist.
+        if (turnier.getSkaters().contains(skater)) {
+            // Der Skater ist bereits angemeldet, keine Aktion erforderlich.
+            return true; // Zurückgeben, dass die Anmeldung erfolgreich war (keine Änderungen vorgenommen).
+        }
+
+        // Skater zum Turnier hinzufügen.
+        turnier.addSkater(skater);
+        persist(turnier);
+        return true;
+    }
+
+    @Override
+    public boolean signSkaterOut(long turnierId, long skaterId) {
+        Turnier turnier = findById(turnierId);
+        Skater skater = em.find(Skater.class, skaterId);
+
+        if (turnier == null || skater == null) {
+            // Wenn das Turnier oder der Skater nicht gefunden wurde,
+            // die Abmeldung nicht durchführen und false zurückgeben.
+            return false;
+        }
+
+        // Überprüfen, ob der Skater angemeldet ist.
+        if (!turnier.getSkaters().contains(skater)) {
+            // Der Skater ist nicht angemeldet, keine Aktion erforderlich.
+            return true; // Zurückgeben, dass die Abmeldung erfolgreich war (keine Änderungen vorgenommen).
+        }
+
+        // Skater vom Turnier entfernen.
+        turnier.removeSkater(skater);
+        persist(turnier);
+        return true;
+    }
+
 }
 
 
